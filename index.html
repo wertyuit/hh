@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسح البيانات</title>
+    <script>
+        function clearData() {
+            // مسح البيانات المخزنة في localStorage
+localStorage.clear();
+
+// مسح البيانات المخزنة في sessionStorage
+sessionStorage.clear();
+
+// مسح الملفات المخزنة في IndexedDB
+var request = indexedDB.deleteDatabase('myDatabase');
+request.onsuccess = function() {
+  console.log('Database deleted successfully');
+};
+request.onerror = function() {
+  console.log('Error deleting database');
+};
+        }
+    </script>
+</head>
+<body>
+    <h2>مسح البيانات المخزنة في المتصفح</h2>
+    <button onclick="clearData()">مسح البيانات</button>
+</body>
+</html>
